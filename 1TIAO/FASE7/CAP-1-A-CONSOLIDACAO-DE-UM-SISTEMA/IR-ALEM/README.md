@@ -56,21 +56,47 @@ O deploy **preserva** os gatilhos `sensores/` e `visao/` da Fase 7 ao acrescenta
 | 3 | ![](docs/prints_rekognition/03_variaveis_ambiente.png) | **Variáveis**: `TOPIC_ARN` (tópico da Fase 7), `CONFIANCA_MIN=70` (corte do `MinConfidence`), `LOCAL_PADRAO` |
 | 4 | ![](docs/prints_rekognition/04_cloudwatch_rotulos.png) | **CloudWatch Logs**: JSON com os rótulos devolvidos pelo Rekognition e a quantidade de detecções |
 | 5 | ![](docs/prints_rekognition/05_email_alerta.png) | **E-mail** "[FarmTech][ALTO] ... Rekognition" com a ação corretiva de pessoa detectada |
-| 6 | ![](docs/prints_rekognition/06_custom_labels.png) | **Rekognition Custom Labels** (configurado até antes de confirmar o treino, que é cobrado por hora): projeto `farmtech-pessoa-carro`, dataset importado do S3 com as 64/8 imagens da Fase 6 e os rótulos `pessoa`/`carro` |
+| 6 | ![](docs/prints_rekognition/06_custom_labels.png) | **Rekognition Custom Labels → Primeira configuração**: o console pede um bucket S3 próprio (`custom-labels-console-us-east-1-...`) para guardar projetos e datasets. A configuração parou neste ponto, **antes da confirmação** |
 
-Campos do Custom Labels (print 6): **Project name** `farmtech-pessoa-carro`; **Training dataset**
-"Import images from S3 bucket" com rótulos automáticos pelo nome da pasta (`pessoa/`, `carro/`);
-**Test dataset** "Split training dataset" (80/20); **Train model** — não confirmado, pois o treino
-custa cerca de US$ 1 por hora e a inferência exige uma *inference unit* ligada (≈ US$ 4/hora), fora
-do orçamento do Learner Lab.
+**Por que o Custom Labels parou antes da confirmação:** os próximos passos seriam criar o projeto
+(`farmtech-pessoa-carro`), importar do S3 as 64/8 imagens da Fase 6 com rótulos pelo nome da pasta
+(`pessoa/`, `carro/`) e clicar em **Train model**. O treino custa cerca de US$ 1 por hora e a
+inferência exige uma *inference unit* ligada (cerca de US$ 4 por hora), o que consumiria rapidamente
+os US$ 50 do Learner Lab. O enunciado permite parar antes desse ponto. O DetectLabels genérico
+(prints 1 a 5) foi implantado e funciona de ponta a ponta.
+
+### Resultado medido: Rekognition x YOLO nas 8 imagens das câmeras
+
+Executado com `deploy_rekognition.py --comparar` (dados em `data/rekognition_vs_yolo.csv`):
+
+| Imagem | Classe real | Rekognition: pessoas / veículos | YOLO personalizado: pessoas / veículos | Latência Rekognition |
+|---|---|---|---|---:|
+| carro_037 | carro | 0 / 3 | 0 / 2 | 3.634 ms |
+| carro_038 | carro | 1 / 1 | 0 / 1 | 1.946 ms |
+| carro_039 | carro | 0 / 1 | 0 / 1 | 875 ms |
+| carro_040 | carro | 0 / 4 | 0 / 3 | 613 ms |
+| pessoa_037 | pessoa | 1 / 0 | 0 / 0 | 4.250 ms |
+| pessoa_038 | pessoa | 1 / 0 | 0 / 1 | 3.200 ms |
+| pessoa_039 | pessoa | 2 / 0 | 0 / 0 | 1.677 ms |
+| pessoa_040 | pessoa | 1 / 3 | 3 / 3 | 1.144 ms |
+
+- **Pessoa:** o Rekognition reconheceu pessoa nas **4 de 4** fotos de pessoa; o YOLO personalizado,
+  em **1 de 4**.
+- **Veículo:** os dois reconheceram veículo nas 4 fotos de carro.
+- **Falso positivo:** o Rekognition viu 1 pessoa em `carro_038`; o YOLO viu um veículo em `pessoa_038`.
+- **Latência:** o Rekognition levou de 0,6 s a 4,3 s por imagem (rede + API); o YOLO local leva
+  cerca de 60 a 100 ms em CPU.
+
+Pela Lambda, a foto `pessoa_038.jpg` enviada ao S3 com o local "Depósito de defensivos" gerou o
+e-mail **[FarmTech][ALTO] Pessoa detectada em Depósito de defensivos**, com confiança de 99% (print 5).
 
 ### Justificativa crítica
 
 | Critério | YOLO local (Fase 6) | Amazon Rekognition (DetectLabels) |
 |---|---|---|
-| Qualidade nas 8 imagens da fazenda | carro 4/4, pessoa 1/4 (modelo personalizado) | rótulos genéricos treinados em escala (ver `data/rekognition_vs_yolo.csv` após `--comparar`) |
+| Qualidade nas 8 imagens da fazenda | carro 4/4, pessoa 1/4 (modelo personalizado) | carro 4/4, **pessoa 4/4**, com 1 falso positivo de pessoa |
 | Infraestrutura | CPU/GPU na fazenda, manutenção do modelo | gerenciado, sem servidor e sem treino |
-| Latência | ~60–100 ms por imagem em CPU | rede + API (centenas de ms); depende da internet rural |
+| Latência | ~60–100 ms por imagem em CPU | 0,6 s a 4,3 s medidos (rede + API); depende da internet rural |
 | Custo | hardware já existente | ≈ US$ 1 por 1.000 imagens (1.000 imagens/dia ≈ US$ 30/mês) |
 | Privacidade (LGPD) | imagem não sai da propriedade | imagens de pessoas vão para a nuvem: usar `sa-east-1`, regra de ciclo de vida no S3 e aviso de monitoramento |
 | Especialização | pode aprender classes da fazenda | genérico; especializar exige Custom Labels (treino e inferência cobrados por hora) |

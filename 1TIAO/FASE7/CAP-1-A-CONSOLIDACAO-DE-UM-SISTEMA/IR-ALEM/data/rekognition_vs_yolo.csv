@@ -1,0 +1,9 @@
+imagem,classe_real,rekognition_pessoas,rekognition_veiculos,yolo_pessoas,yolo_veiculos,latencia_rekognition_ms,rotulos
+carro_037.jpg,carro,0,3,0,2,3634,"Machine, Spoke, Road, Alloy Wheel, Car, Car Wheel, Tire, Transportation"
+carro_038.jpg,carro,1,1,0,1,1946,"Car, Transportation, Vehicle, Adventure, Leisure Activities, Road, Offroad, Machine"
+carro_039.jpg,carro,0,1,0,1,875,"Machine, Wheel, Spoke, Alloy Wheel, Car, Car Wheel, Tire, Transportation"
+carro_040.jpg,carro,0,4,0,3,613,"Architecture, Building, Outdoors, Shelter, License Plate, Transportation, Vehicle, City"
+pessoa_037.jpg,pessoa,1,0,0,0,4250,"Sticker, Art, Baby, Person, Doodle, Drawing, Face, Head"
+pessoa_038.jpg,pessoa,1,0,0,1,3200,"Clothing, Pants, Jeans, Bag, Accessories, Person, Footwear, Shoe"
+pessoa_039.jpg,pessoa,2,0,0,0,1677,"Architecture, Building, Person, Art, Painting, Road, Tarmac, Clothing"
+pessoa_040.jpg,pessoa,1,3,3,3,1144,"Photography, Person, Portrait, T-Shirt, City, Advertisement, Street, Urban"
