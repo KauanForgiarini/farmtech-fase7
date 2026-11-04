@@ -1,0 +1,17 @@
+{
+  "modelo": "yolo_farmtech_30ep.pt",
+  "base": "yolov8n.pt (COCO)",
+  "epocas": 30,
+  "imgsz": 640,
+  "tempo_treino_s": 610.1,
+  "teste": {
+    "precision": 0.9723,
+    "recall": 0.3839,
+    "mAP50": 0.4853,
+    "mAP50_95": 0.375
+  },
+  "classes": [
+    "pessoa",
+    "carro"
+  ]
+}

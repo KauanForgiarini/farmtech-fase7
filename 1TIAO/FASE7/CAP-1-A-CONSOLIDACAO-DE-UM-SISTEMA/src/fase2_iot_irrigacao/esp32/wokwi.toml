@@ -1,0 +1,9 @@
+# Wokwi for VS Code: compile com "pio run" e inicie a simulação (F1 > Wokwi: Start Simulator).
+# A porta RFC2217 permite que o Python leia a Serial do ESP32 simulado:
+#   python farmtech.py fase2 --serial rfc2217://localhost:4000
+[wokwi]
+version = 1
+firmware = '.pio/build/esp32dev/firmware.bin'
+elf = '.pio/build/esp32dev/firmware.elf'
+rfc2217ServerPort = 4000
+diagram = 'farmtech_irrigacao/diagram.json'

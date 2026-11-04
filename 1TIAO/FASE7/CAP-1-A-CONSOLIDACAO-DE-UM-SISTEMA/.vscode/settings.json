@@ -1,0 +1,10 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "terminal.integrated.env.windows": { "PYTHONPATH": "${workspaceFolder}/src", "PYTHONUTF8": "1" },
+  "terminal.integrated.env.linux": { "PYTHONPATH": "${workspaceFolder}/src" },
+  "terminal.integrated.env.osx": { "PYTHONPATH": "${workspaceFolder}/src" },
+  "files.encoding": "utf8"
+}

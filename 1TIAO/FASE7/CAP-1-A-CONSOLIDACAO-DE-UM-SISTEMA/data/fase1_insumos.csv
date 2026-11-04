@@ -1,0 +1,15 @@
+ID_APLICACAO,ID_TALHAO,INSUMO,TIPO_DOSE,DOSE,UNIDADE,QUANTIDADE_TOTAL,UNIDADE_TOTAL
+1,1,Fosfato monoamônico (MAP),POR_HA,200.0,kg/ha,3000.0,kg
+2,1,Cloreto de potássio (KCl),POR_HA,100.0,kg/ha,1500.0,kg
+3,1,Herbicida glifosato,POR_HA,3.0,L/ha,45.0,L
+4,1,Fungicida para ferrugem asiática,POR_METRO,0.5,mL/m,150.0,L
+5,2,Fosfato monoamônico (MAP),POR_HA,200.0,kg/ha,2000.0,kg
+6,2,Cloreto de potássio (KCl),POR_HA,100.0,kg/ha,1000.0,kg
+7,2,Herbicida glifosato,POR_HA,3.0,L/ha,30.0,L
+8,2,Fungicida para ferrugem asiática,POR_METRO,0.5,mL/m,100.0,L
+9,3,Formulado NPK 08-28-16,POR_HA,350.0,kg/ha,6872.25,kg
+10,3,Ureia (nitrogênio em cobertura),POR_HA,250.0,kg/ha,4908.75,kg
+11,3,Inseticida para lagarta-do-cartucho,POR_METRO,0.3,mL/m,73.631,L
+12,4,Formulado NPK 08-28-16,POR_HA,350.0,kg/ha,3562.58,kg
+13,4,Ureia (nitrogênio em cobertura),POR_HA,250.0,kg/ha,2544.7,kg
+14,4,Inseticida para lagarta-do-cartucho,POR_METRO,0.3,mL/m,38.17,L

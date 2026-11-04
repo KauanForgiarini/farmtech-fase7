@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "wokwi.wokwi-vscode",
+    "platformio.platformio-ide",
+    "Oracle.sql-developer",
+    "amazonwebservices.aws-toolkit-vscode"
+  ]
+}

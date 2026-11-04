@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicarSomenteNoTopicoDeAlertas",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:sa-east-1:<ID_DA_CONTA>:farmtech-alertas"
+    },
+    {
+      "Sid": "LerSomenteEventosDosSensoresEVisao",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": [
+        "arn:aws:s3:::farmtech-alertas-<ID_DA_CONTA>-sa-east-1/sensores/*",
+        "arn:aws:s3:::farmtech-alertas-<ID_DA_CONTA>-sa-east-1/visao/*"
+      ]
+    },
+    {
+      "Sid": "ReconhecimentoDeImagensIrAlem1",
+      "Effect": "Allow",
+      "Action": "rekognition:DetectLabels",
+      "Resource": "*"
+    },
+    {
+      "Sid": "LogsDaFuncao",
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": "arn:aws:logs:sa-east-1:<ID_DA_CONTA>:log-group:/aws/lambda/farmtech-*"
+    }
+  ]
+}

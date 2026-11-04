@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Segredos e configurações locais (nunca versionar)
+.env
+**/data/aws_config.json
+.aws/
+
+# Arquivos gerados em execução
+**/data/farmtech.db
+**/data/fase6_uploads/
+**/data/fase6_dataset/labels/*.cache
+**/src/fase6_visao_computacional/runs/
+**/src/fase6_visao_computacional/modelos/yolov8n.pt
+**/src/fase2_iot_irrigacao/esp32/.pio/
+
+# Anotações pessoais do integrante
+PASSO_A_PASSO_ENTREGA.md
+ENTREGA_PORTAL.txt
+
+# Sistema operacional / IDE
+.DS_Store
+Thumbs.db
+.idea/
+
+# Configuração local do Claude Code
+.claude/

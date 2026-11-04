@@ -1,0 +1,214 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FarmTech: pipeline completo (Fases 1 a 7)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "pipeline"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FarmTech: dashboard final",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "dashboard"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 1: plantio e insumos (exemplo)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase1",
+        "--exemplo"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 1: menu interativo",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase1",
+        "--menu"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 1: estatística (R/Python)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase1-estatistica"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 2: leituras do ESP32 (simulador)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase2",
+        "--leituras",
+        "72",
+        "--cenario",
+        "realista",
+        "--clima"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 2: ler ESP32 do Wokwi (RFC2217)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase2",
+        "--serial",
+        "rfc2217://localhost:4000",
+        "--leituras",
+        "10"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 3: ETL + consultas no banco",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase3"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 4: treinar modelos e prever",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase4"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 6: visão computacional YOLO",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "fase6"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 7: alertas (automático)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "alertas",
+        "--modo",
+        "auto"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 7: alertas via S3 -> Lambda -> SNS",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "alertas",
+        "--modo",
+        "s3"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Fase 7: implantar na AWS",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "farmtech.py",
+        "aws-deploy",
+        "--email",
+        "${input:email}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Testes (pytest)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "-m",
+        "pytest",
+        "-q",
+        "tests"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "email",
+      "type": "promptString",
+      "description": "E-mail que receberá os alertas"
+    }
+  ]
+}

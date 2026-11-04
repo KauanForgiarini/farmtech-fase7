@@ -1,0 +1,9 @@
+grupo,variavel,n,media,desvio_padrao,mediana,minimo,maximo,coef_variacao_pct,ferramenta
+talhoes_milho,area_ha,2,14.9069,6.6865,14.9069,10.1788,19.635,44.86,Python
+talhoes_milho,num_ruas,2,536.5,123.7437,536.5,449.0,624.0,23.06,Python
+talhoes_soja,area_ha,2,12.5,3.5355,12.5,10.0,15.0,28.28,Python
+talhoes_soja,num_ruas,2,550.0,70.7107,550.0,500.0,600.0,12.86,Python
+sensores,umidade_solo_pct,72,59.4167,3.2577,60.6,52.1,64.5,5.48,Python
+sensores,ph_solo,72,5.785,0.1895,5.775,5.39,6.12,3.28,Python
+sensores,temperatura_c,72,25.9875,4.4438,26.2,19.0,33.7,17.1,Python
+sensores,chuva_prevista_mm,72,0.0,0.0,0.0,0.0,0.0,0.0,Python

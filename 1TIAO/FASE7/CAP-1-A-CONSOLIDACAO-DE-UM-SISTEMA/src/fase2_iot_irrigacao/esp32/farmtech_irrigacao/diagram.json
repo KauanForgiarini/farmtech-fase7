@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "authors": "FarmTech Solutions - Kauan Maciel Forgiarini RM574005",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "esp",
+      "type": "wokwi-esp32-devkit-v1",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "id": "dht1",
+      "type": "wokwi-dht22",
+      "top": -80,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "id": "r_pull",
+      "type": "wokwi-resistor",
+      "top": -50,
+      "left": 350,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "id": "ldr1",
+      "type": "wokwi-photoresistor-sensor",
+      "top": 80,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "id": "btn_n",
+      "type": "wokwi-pushbutton",
+      "top": 200,
+      "left": 250,
+      "attrs": { "color": "green", "label": "N" }
+    },
+    {
+      "id": "btn_p",
+      "type": "wokwi-pushbutton",
+      "top": 280,
+      "left": 250,
+      "attrs": { "color": "green", "label": "P" }
+    },
+    {
+      "id": "btn_k",
+      "type": "wokwi-pushbutton",
+      "top": 360,
+      "left": 250,
+      "attrs": { "color": "green", "label": "K" }
+    },
+    {
+      "id": "relay1",
+      "type": "wokwi-relay-module",
+      "top": -80,
+      "left": -200,
+      "attrs": {}
+    },
+    {
+      "id": "led_on",
+      "type": "wokwi-led",
+      "top": 200,
+      "left": -200,
+      "attrs": { "color": "green", "label": "IRRIGANDO" }
+    },
+    {
+      "id": "led_off",
+      "type": "wokwi-led",
+      "top": 280,
+      "left": -200,
+      "attrs": { "color": "red", "label": "PARADO" }
+    },
+    {
+      "id": "r1",
+      "type": "wokwi-resistor",
+      "top": 220,
+      "left": -120,
+      "attrs": { "value": "220" }
+    },
+    {
+      "id": "r2",
+      "type": "wokwi-resistor",
+      "top": 300,
+      "left": -120,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    ["esp:TX0", "$serialMonitor:RX", "", []],
+    ["esp:RX0", "$serialMonitor:TX", "", []],
+
+    ["esp:D15",   "dht1:SDA",   "green",  []],
+    ["esp:3V3",   "dht1:VCC",   "red",    []],
+    ["esp:GND.1", "dht1:GND",   "black",  []],
+    ["esp:3V3",   "r_pull:1",   "red",    []],
+    ["r_pull:2",  "dht1:SDA",   "green",  []],
+
+    ["esp:D34",   "ldr1:AO",    "orange", []],
+    ["esp:3V3",   "ldr1:VCC",   "red",    []],
+    ["esp:GND.1", "ldr1:GND",   "black",  []],
+
+    ["esp:D12",   "btn_n:1.l",  "yellow", []],
+    ["esp:GND.2", "btn_n:2.l",  "black",  []],
+
+    ["esp:D13",   "btn_p:1.l",  "yellow", []],
+    ["esp:GND.2", "btn_p:2.l",  "black",  []],
+
+    ["esp:D14",   "btn_k:1.l",  "yellow", []],
+    ["esp:GND.2", "btn_k:2.l",  "black",  []],
+
+    ["esp:D26",   "relay1:IN",  "purple", []],
+    ["esp:VIN",   "relay1:VCC", "red",    []],
+    ["esp:GND.1", "relay1:GND", "black",  []],
+
+    ["esp:D2",    "r1:1",       "green",  []],
+    ["r1:2",      "led_on:A",   "green",  []],
+    ["esp:GND.1", "led_on:C",   "black",  []],
+
+    ["esp:D4",    "r2:1",       "red",    []],
+    ["r2:2",      "led_off:A",  "red",    []],
+    ["esp:GND.1", "led_off:C",  "black",  []]
+  ]
+}

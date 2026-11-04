@@ -1,0 +1,6 @@
+configuracao,receita_media,receita_desvio,gap_medio_pct,acertos_otimo,tempo_medio_s,geracao_media_melhor
+"Base (roleta, 1 ponto, bit-flip)",43904.05,366.53,1.29,1,0.39,95.8
+Seleção por torneio,44317.55,225.68,0.37,9,0.28,90.2
+Cruzamento uniforme,43846.65,520.38,1.42,2,0.36,112.75
+Mutação com reparo,44473.95,15.5,0.01,17,1.71,62.45
+"Combinada (torneio, uniforme, reparo)",44480.0,0.0,0.0,20,1.64,49.25

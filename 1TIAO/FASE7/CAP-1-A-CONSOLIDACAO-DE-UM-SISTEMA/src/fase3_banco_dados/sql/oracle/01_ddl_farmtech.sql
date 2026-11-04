@@ -1,0 +1,133 @@
+-- ============================================================
+-- FarmTech Solutions - Fase 3 (evoluída na Fase 7)
+-- Modelo relacional do sistema integrado - Oracle Database
+-- Kauan Maciel Forgiarini | RM574005 | FIAP IA
+--
+-- Conexão FIAP: oracle.fiap.com.br | porta 1521 | SID ORCL
+-- Execução: SQL Developer (F5 - executar script) ou
+--           python src/fase3_banco_dados/carga_banco.py  (FARMTECH_DB=oracle)
+--
+-- A Fase 3 original guardava as leituras em uma única tabela
+-- (SENSOR_FARMTECH). Na consolidação o modelo foi normalizado para
+-- receber os dados de todas as fases:
+--   Fase 1 -> CULTURA, TALHAO, APLICACAO_INSUMO
+--   Fase 2 -> LEITURA_SENSOR
+--   Fase 4 -> PREVISAO_ML
+--   Fase 6 -> DETECCAO_VISAO
+--   Fase 7 -> ALERTA
+-- ============================================================
+
+CREATE TABLE CULTURA (
+    ID_CULTURA      NUMBER(3)     PRIMARY KEY,
+    NOME            VARCHAR2(30)  NOT NULL UNIQUE,
+    PH_MIN          NUMBER(3,1)   NOT NULL,
+    PH_MAX          NUMBER(3,1)   NOT NULL,
+    UMIDADE_MIN     NUMBER(4,1)   NOT NULL,
+    UMIDADE_MAX     NUMBER(4,1)   NOT NULL,
+    ESPACAMENTO_M   NUMBER(4,2)   NOT NULL,
+    CONSTRAINT CK_CULTURA_PH CHECK (PH_MIN < PH_MAX)
+);
+
+CREATE TABLE TALHAO (
+    ID_TALHAO        NUMBER(5)     PRIMARY KEY,
+    NOME             VARCHAR2(60)  NOT NULL,
+    ID_CULTURA       NUMBER(3)     NOT NULL,
+    FORMA            VARCHAR2(10)  NOT NULL,
+    DIMENSAO_1_M     NUMBER(8,2)   NOT NULL,
+    DIMENSAO_2_M     NUMBER(8,2),
+    AREA_M2          NUMBER(12,2)  NOT NULL,
+    AREA_HA          NUMBER(10,4)  NOT NULL,
+    NUM_RUAS         NUMBER(6),
+    METROS_LINEARES  NUMBER(12,1),
+    DATA_CADASTRO    VARCHAR2(19),
+    CONSTRAINT FK_TALHAO_CULTURA FOREIGN KEY (ID_CULTURA) REFERENCES CULTURA (ID_CULTURA),
+    CONSTRAINT CK_TALHAO_FORMA CHECK (FORMA IN ('RETANGULO', 'CIRCULO')),
+    CONSTRAINT CK_TALHAO_AREA CHECK (AREA_M2 > 0)
+);
+
+CREATE TABLE APLICACAO_INSUMO (
+    ID_APLICACAO      NUMBER(6)     PRIMARY KEY,
+    ID_TALHAO         NUMBER(5)     NOT NULL,
+    INSUMO            VARCHAR2(60)  NOT NULL,
+    TIPO_DOSE         VARCHAR2(12)  NOT NULL,
+    DOSE              NUMBER(10,3)  NOT NULL,
+    UNIDADE           VARCHAR2(10)  NOT NULL,
+    QUANTIDADE_TOTAL  NUMBER(14,3)  NOT NULL,
+    UNIDADE_TOTAL     VARCHAR2(5)   NOT NULL,
+    CONSTRAINT FK_INSUMO_TALHAO FOREIGN KEY (ID_TALHAO) REFERENCES TALHAO (ID_TALHAO)
+        ON DELETE CASCADE,
+    CONSTRAINT CK_INSUMO_TIPO CHECK (TIPO_DOSE IN ('POR_HA', 'POR_METRO'))
+);
+
+CREATE TABLE LEITURA_SENSOR (
+    ID_LEITURA         NUMBER(8)     PRIMARY KEY,
+    ID_TALHAO          NUMBER(5)     NOT NULL,
+    DATA_HORA          VARCHAR2(19)  NOT NULL,
+    N_PRESENTE         NUMBER(1)     CHECK (N_PRESENTE IN (0, 1)),
+    P_PRESENTE         NUMBER(1)     CHECK (P_PRESENTE IN (0, 1)),
+    K_PRESENTE         NUMBER(1)     CHECK (K_PRESENTE IN (0, 1)),
+    N_KGHA             NUMBER(6,1),
+    P_KGHA             NUMBER(6,1),
+    K_KGHA             NUMBER(6,1),
+    PH_SOLO            NUMBER(4,2)   CHECK (PH_SOLO BETWEEN 0 AND 14),
+    UMIDADE_SOLO_PCT   NUMBER(5,1)   CHECK (UMIDADE_SOLO_PCT BETWEEN 0 AND 100),
+    TEMPERATURA_C      NUMBER(5,1),
+    CHUVA_PREVISTA_MM  NUMBER(6,1),
+    BOMBA_LIGADA       NUMBER(1)     CHECK (BOMBA_LIGADA IN (0, 1)),
+    MOTIVO_DECISAO     VARCHAR2(30),
+    ORIGEM             VARCHAR2(20),
+    CONSTRAINT FK_LEITURA_TALHAO FOREIGN KEY (ID_TALHAO) REFERENCES TALHAO (ID_TALHAO)
+);
+
+CREATE TABLE PREVISAO_ML (
+    ID_LEITURA                NUMBER(8)    PRIMARY KEY,
+    VOLUME_IRRIGACAO_L        NUMBER(7,2),
+    NECESSIDADE_FERT_KGHA     NUMBER(7,2),
+    RENDIMENTO_ESPERADO_SCHA  NUMBER(7,2),
+    MODELO                    VARCHAR2(40),
+    CONSTRAINT FK_PREVISAO_LEITURA FOREIGN KEY (ID_LEITURA) REFERENCES LEITURA_SENSOR (ID_LEITURA)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE DETECCAO_VISAO (
+    ID_DETECCAO   NUMBER(8)     PRIMARY KEY,
+    DATA_HORA     VARCHAR2(19)  NOT NULL,
+    LOCAL_CAMERA  VARCHAR2(60)  NOT NULL,
+    IMAGEM        VARCHAR2(200) NOT NULL,
+    CLASSE        VARCHAR2(20)  NOT NULL,
+    CONFIANCA     NUMBER(5,4)   CHECK (CONFIANCA BETWEEN 0 AND 1),
+    X1            NUMBER(8,1),
+    Y1            NUMBER(8,1),
+    X2            NUMBER(8,1),
+    Y2            NUMBER(8,1),
+    MODELO        VARCHAR2(60)
+);
+
+CREATE TABLE ALERTA (
+    ID_ALERTA       NUMBER(8)      PRIMARY KEY,
+    DATA_HORA       VARCHAR2(19)   NOT NULL,
+    ORIGEM          VARCHAR2(20)   NOT NULL,
+    CODIGO          VARCHAR2(40)   NOT NULL,
+    SEVERIDADE      VARCHAR2(10)   NOT NULL,
+    TITULO          VARCHAR2(150)  NOT NULL,
+    LOCAL_ALERTA    VARCHAR2(60),
+    EVIDENCIA       VARCHAR2(500),
+    ACAO_CORRETIVA  VARCHAR2(800)  NOT NULL,
+    RESPONSAVEL     VARCHAR2(60),
+    OCORRENCIAS     NUMBER(5),
+    CANAL           VARCHAR2(20),
+    STATUS_ENVIO    VARCHAR2(20),
+    MESSAGE_ID      VARCHAR2(100),
+    CONSTRAINT CK_ALERTA_SEVERIDADE CHECK (SEVERIDADE IN ('INFO', 'MEDIO', 'ALTO', 'CRITICO'))
+);
+
+CREATE INDEX IX_LEITURA_DATA ON LEITURA_SENSOR (DATA_HORA);
+CREATE INDEX IX_DETECCAO_CLASSE ON DETECCAO_VISAO (CLASSE);
+CREATE INDEX IX_ALERTA_SEVERIDADE ON ALERTA (SEVERIDADE);
+
+COMMENT ON TABLE TALHAO IS 'Talhões cadastrados na Fase 1 (área de plantio por figura geométrica)';
+COMMENT ON TABLE APLICACAO_INSUMO IS 'Manejo de insumos calculado na Fase 1';
+COMMENT ON TABLE LEITURA_SENSOR IS 'Leituras do ESP32 (Fase 2): NPK, pH (LDR), umidade (DHT22) e decisão da bomba';
+COMMENT ON TABLE PREVISAO_ML IS 'Previsões dos modelos de regressão da Fase 4 para cada leitura';
+COMMENT ON TABLE DETECCAO_VISAO IS 'Detecções de pessoas e veículos do YOLO (Fase 6)';
+COMMENT ON TABLE ALERTA IS 'Alertas e ações corretivas enviados pelo serviço AWS SNS (Fase 7)';

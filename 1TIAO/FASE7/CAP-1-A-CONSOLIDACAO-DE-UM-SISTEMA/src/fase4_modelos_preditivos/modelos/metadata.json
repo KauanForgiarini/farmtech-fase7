@@ -1,0 +1,151 @@
+{
+  "features": [
+    "UMIDADE_SOLO_PCT",
+    "PH_SOLO",
+    "TEMPERATURA_C",
+    "CHUVA_PREVISTA_MM",
+    "N_KGHA",
+    "P_KGHA",
+    "K_KGHA"
+  ],
+  "alvos": {
+    "volume_irrigacao": "VOLUME_IRRIGACAO_L",
+    "necessidade_fert": "NECESSIDADE_FERT_KGHA",
+    "rendimento_esperado": "RENDIMENTO_ESPERADO_SCHA"
+  },
+  "amostras_treino": 200,
+  "resultados": {
+    "volume_irrigacao": {
+      "coluna": "VOLUME_IRRIGACAO_L",
+      "melhor_modelo": "Gradient Boosting",
+      "melhor_cv_r2": 0.8355,
+      "modelos": {
+        "Regressão Linear": {
+          "MAE": 0.5571,
+          "RMSE": 0.6837,
+          "R2": 0.57,
+          "CV_R2_media": 0.5342,
+          "CV_R2_desvio": 0.0674
+        },
+        "Ridge": {
+          "MAE": 0.5568,
+          "RMSE": 0.6821,
+          "R2": 0.5719,
+          "CV_R2_media": 0.5358,
+          "CV_R2_desvio": 0.0644
+        },
+        "Random Forest": {
+          "MAE": 0.3879,
+          "RMSE": 0.5459,
+          "R2": 0.7258,
+          "CV_R2_media": 0.7621,
+          "CV_R2_desvio": 0.0372
+        },
+        "Gradient Boosting": {
+          "MAE": 0.337,
+          "RMSE": 0.4704,
+          "R2": 0.7964,
+          "CV_R2_media": 0.8355,
+          "CV_R2_desvio": 0.0401
+        }
+      },
+      "importancia_features": {
+        "UMIDADE_SOLO_PCT": 0.6051,
+        "PH_SOLO": 0.1335,
+        "TEMPERATURA_C": 0.0216,
+        "CHUVA_PREVISTA_MM": 0.2075,
+        "N_KGHA": 0.0046,
+        "P_KGHA": 0.0201,
+        "K_KGHA": 0.0076
+      }
+    },
+    "necessidade_fert": {
+      "coluna": "NECESSIDADE_FERT_KGHA",
+      "melhor_modelo": "Gradient Boosting",
+      "melhor_cv_r2": 0.8471,
+      "modelos": {
+        "Regressão Linear": {
+          "MAE": 2.6182,
+          "RMSE": 3.4048,
+          "R2": 0.6632,
+          "CV_R2_media": 0.6166,
+          "CV_R2_desvio": 0.059
+        },
+        "Ridge": {
+          "MAE": 2.6209,
+          "RMSE": 3.41,
+          "R2": 0.6621,
+          "CV_R2_media": 0.6171,
+          "CV_R2_desvio": 0.0581
+        },
+        "Random Forest": {
+          "MAE": 2.4163,
+          "RMSE": 3.069,
+          "R2": 0.7263,
+          "CV_R2_media": 0.741,
+          "CV_R2_desvio": 0.0333
+        },
+        "Gradient Boosting": {
+          "MAE": 1.7108,
+          "RMSE": 2.1873,
+          "R2": 0.861,
+          "CV_R2_media": 0.8471,
+          "CV_R2_desvio": 0.0347
+        }
+      },
+      "importancia_features": {
+        "UMIDADE_SOLO_PCT": 0.0107,
+        "PH_SOLO": 0.1848,
+        "TEMPERATURA_C": 0.0087,
+        "CHUVA_PREVISTA_MM": 0.0061,
+        "N_KGHA": 0.4494,
+        "P_KGHA": 0.2024,
+        "K_KGHA": 0.1379
+      }
+    },
+    "rendimento_esperado": {
+      "coluna": "RENDIMENTO_ESPERADO_SCHA",
+      "melhor_modelo": "Gradient Boosting",
+      "melhor_cv_r2": 0.7607,
+      "modelos": {
+        "Regressão Linear": {
+          "MAE": 3.5424,
+          "RMSE": 4.339,
+          "R2": 0.6003,
+          "CV_R2_media": 0.5304,
+          "CV_R2_desvio": 0.1088
+        },
+        "Ridge": {
+          "MAE": 3.544,
+          "RMSE": 4.3393,
+          "R2": 0.6003,
+          "CV_R2_media": 0.5313,
+          "CV_R2_desvio": 0.1073
+        },
+        "Random Forest": {
+          "MAE": 2.6427,
+          "RMSE": 3.5257,
+          "R2": 0.7361,
+          "CV_R2_media": 0.6708,
+          "CV_R2_desvio": 0.0729
+        },
+        "Gradient Boosting": {
+          "MAE": 2.0641,
+          "RMSE": 2.7326,
+          "R2": 0.8415,
+          "CV_R2_media": 0.7607,
+          "CV_R2_desvio": 0.0578
+        }
+      },
+      "importancia_features": {
+        "UMIDADE_SOLO_PCT": 0.3838,
+        "PH_SOLO": 0.0518,
+        "TEMPERATURA_C": 0.0781,
+        "CHUVA_PREVISTA_MM": 0.0152,
+        "N_KGHA": 0.1074,
+        "P_KGHA": 0.1981,
+        "K_KGHA": 0.1656
+      }
+    }
+  }
+}

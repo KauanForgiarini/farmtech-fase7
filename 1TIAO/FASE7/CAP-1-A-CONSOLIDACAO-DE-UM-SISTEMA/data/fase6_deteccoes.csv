@@ -1,0 +1,15 @@
+ID_DETECCAO,DATA_HORA,LOCAL_CAMERA,IMAGEM,CLASSE,CONFIANCA,X1,Y1,X2,Y2,MODELO
+1,2026-11-04 09:50:57,Portaria principal,carro_037.jpg,carro,0.9921,408.5,322.5,753.0,464.3,yolo_farmtech_30ep.pt
+2,2026-11-04 09:50:57,Portaria principal,carro_037.jpg,carro,0.7495,114.7,373.2,198.8,423.2,yolo_farmtech_30ep.pt
+3,2026-11-04 09:50:57,Portaria principal,carro_038.jpg,carro,0.5118,125.4,212.7,783.3,583.1,yolo_farmtech_30ep.pt
+4,2026-11-04 09:50:57,Estrada interna - Pivô 1,carro_039.jpg,carro,0.5949,43.2,237.6,817.1,461.5,yolo_farmtech_30ep.pt
+5,2026-11-04 09:50:57,Galpão de máquinas,carro_040.jpg,carro,0.915,113.7,414.6,249.2,505.8,yolo_farmtech_30ep.pt
+6,2026-11-04 09:50:57,Galpão de máquinas,carro_040.jpg,carro,0.9032,806.6,404.3,968.1,469.0,yolo_farmtech_30ep.pt
+7,2026-11-04 09:50:57,Galpão de máquinas,carro_040.jpg,carro,0.7559,0.1,436.4,47.7,521.6,yolo_farmtech_30ep.pt
+8,2026-11-04 09:50:57,Depósito de defensivos,pessoa_038.jpg,carro,0.5124,67.9,663.1,310.3,984.5,yolo_farmtech_30ep.pt
+9,2026-11-04 09:50:57,Portaria principal,pessoa_040.jpg,pessoa,0.8533,274.0,263.2,436.7,712.7,yolo_farmtech_30ep.pt
+10,2026-11-04 09:50:57,Portaria principal,pessoa_040.jpg,carro,0.762,465.1,311.7,620.7,377.0,yolo_farmtech_30ep.pt
+11,2026-11-04 09:50:57,Portaria principal,pessoa_040.jpg,carro,0.6168,466.2,284.0,683.0,382.2,yolo_farmtech_30ep.pt
+12,2026-11-04 09:50:57,Portaria principal,pessoa_040.jpg,pessoa,0.4994,362.5,243.7,440.5,711.8,yolo_farmtech_30ep.pt
+13,2026-11-04 09:50:57,Portaria principal,pessoa_040.jpg,pessoa,0.3153,366.6,241.8,442.2,573.3,yolo_farmtech_30ep.pt
+14,2026-11-04 09:50:57,Portaria principal,pessoa_040.jpg,carro,0.2529,418.6,315.2,510.0,360.1,yolo_farmtech_30ep.pt
