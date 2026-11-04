@@ -7,7 +7,8 @@
 <br>
 
 # 🎓 Graduação ON em Inteligência Artificial
-## 📚 Repositório de Projetos e Trabalhos Acadêmicos — Kauan Maciel Forgiarini (RM 574005)
+## 📚 Repositório de Projetos e Trabalhos Acadêmicos — Grupo 27
+Kauan Maciel Forgiarini (RM 574005) e Wagner Adriano de Souza Silva Junior (RM 569431)
 
 Repositório organizado conforme o modelo oficial da coordenação
 ([FIAP-PORTFOLIO-AI](https://github.com/fiap-tutoria/FIAP-PORTFOLIO-AI)).

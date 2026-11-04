@@ -2,6 +2,7 @@
 -- FarmTech Solutions - Fase 3 (evoluída na Fase 7)
 -- Modelo relacional do sistema integrado - Oracle Database
 -- Kauan Maciel Forgiarini | RM574005 | FIAP IA
+-- Wagner Adriano de Souza Silva Junior | RM569431
 --
 -- Conexão FIAP: oracle.fiap.com.br | porta 1521 | SID ORCL
 -- Execução: SQL Developer (F5 - executar script) ou

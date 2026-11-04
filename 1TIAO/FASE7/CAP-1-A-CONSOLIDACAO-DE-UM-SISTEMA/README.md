@@ -16,6 +16,7 @@
 
 ## 👨‍🎓 Integrantes:
 - <a href="https://github.com/KauanForgiarini">Kauan Maciel Forgiarini</a> — RM 574005
+- Wagner Adriano de Souza Silva Junior — RM 569431
 
 ## 👩‍🏫 Professores:
 

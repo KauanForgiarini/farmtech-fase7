@@ -1,6 +1,7 @@
 # ============================================================
 #  FarmTech Solutions - Fase 1: análise estatística em R
 #  Kauan Maciel Forgiarini | RM 574005 | FIAP IA
+#  Wagner Adriano de Souza Silva Junior | RM 569431
 # ============================================================
 #  Entradas (geradas pelos serviços em Python):
 #    data/fase1_talhoes.csv           - talhões e áreas (Fase 1)

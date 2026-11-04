@@ -1,6 +1,6 @@
 # IR ALÉM — Fase 7 (FarmTech Solutions · Grupo 27)
 
-Kauan Maciel Forgiarini — RM 574005
+Kauan Maciel Forgiarini — RM 574005 · Wagner Adriano de Souza Silva Junior — RM 569431
 
 | Desafio | Vídeo (YouTube, não listado, até 4 min) |
 |---|---|

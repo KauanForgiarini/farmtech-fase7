@@ -3,6 +3,7 @@
  *  FarmTech Solutions - Sistema de Irrigação Inteligente
  *  Fase 2 (revisado na Fase 7 - sistema integrado)
  *  Kauan Maciel Forgiarini | RM 574005 | FIAP IA
+ *  Wagner Adriano de Souza Silva Junior | RM 569431
  * ============================================================
  *
  *  Cultura monitorada: SOJA (Talhão 1 - Soja Norte, cadastrado na Fase 1)

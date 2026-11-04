@@ -49,7 +49,9 @@ PAGINAS = [
 
 with st.sidebar:
     st.markdown("### 🌱 FarmTech Solutions")
-    st.caption("Fase 7 · A consolidação de um sistema\n\nGrupo 27 · FIAP Inteligência Artificial")
+    st.caption("Fase 7 · A consolidação de um sistema\n\nGrupo 27 · FIAP Inteligência Artificial\n\n"
+               "Kauan Maciel Forgiarini (RM 574005)\n\n"
+               "Wagner Adriano de Souza Silva Junior (RM 569431)")
 
 navegacao = st.navigation(PAGINAS)
 navegacao.run()

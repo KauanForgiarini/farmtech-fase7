@@ -8,7 +8,7 @@ assinatura de e-mail confirmada; `python farmtech.py pipeline` rodado; dashboard
 
 | Tempo | Tela | Fala / ação |
 |---|---|---|
-| 0:00–0:40 | README no GitHub | "Sou Kauan Maciel Forgiarini, RM 574005, Grupo 27. Na Fase 7 a FarmTech integra as Fases 1 a 6 em um único sistema e cria um serviço de alertas na AWS." Mostrar a figura de arquitetura. |
+| 0:00–0:40 | README no GitHub | "Somos Kauan Maciel Forgiarini, RM 574005, e Wagner Adriano de Souza Silva Junior, RM 569431, do Grupo 27. Na Fase 7 a FarmTech integra as Fases 1 a 6 em um único sistema e cria um serviço de alertas na AWS." Mostrar a figura de arquitetura. |
 | 0:40–1:30 | VS Code com a pasta única | Mostrar `src/` com uma subpasta por fase, `farmtech.py --listar` no terminal e o `tasks.json` (Run Task). Explicar: botão da dashboard = mesmo comando de terminal. |
 | 1:30–2:30 | Dashboard → Fase 1 | Cadastrar um talhão de soja pelo formulário; mostrar área, ruas e insumos. Clicar em "Executar análise estatística" (R/Python) e mostrar média e desvio padrão. |
 | 2:30–3:40 | Dashboard → Fase 2 | Mostrar o firmware e o circuito Wokwi (pode abrir o wokwi.com rapidamente). Escolher o cenário "Seca", marcar Open-Meteo, coletar leituras; explicar a regra da bomba nos gráficos. |
