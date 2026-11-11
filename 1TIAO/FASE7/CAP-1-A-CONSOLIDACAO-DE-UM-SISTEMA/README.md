@@ -26,13 +26,13 @@
 ### Coordenador(a)
 - <a href="https://www.linkedin.com/in/andregodoichiovato/">André Godoi Chiovato</a>
 
-## 🎥 Vídeos demonstrativos (YouTube, não listados)
+### 🎥 Vídeos da entrega (YouTube, não listados)
 
-| Entrega | Duração | Link |
-|---|---|---|
-| Sistema integrado + alertas AWS (principal) | até 10 min | LINK_VIDEO_PRINCIPAL |
-| Ir Além 1 — Amazon Rekognition | até 4 min | LINK_VIDEO_IR_ALEM_1 |
-| Ir Além 2 — Algoritmo genético | até 4 min | LINK_VIDEO_IR_ALEM_2 |
+| Vídeo | Link |
+|---|---|
+| Sistema integrado + alertas AWS (principal) | https://www.youtube.com/watch?v=G_NbZXSttco |
+| Ir Além 1 — Amazon Rekognition | https://youtu.be/vNi8Qp7MON0 |
+| Ir Além 2 — Algoritmo genético | https://youtu.be/sV19-E6zK7o |
 
 ---
 
